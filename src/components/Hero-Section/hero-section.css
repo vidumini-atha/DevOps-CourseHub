@@ -1,0 +1,51 @@
+.hero__content h2 {
+  font-weight: 610;
+  line-height: 51px;
+  color: white;
+}
+.hero-section {
+  margin-top: 70px;
+  background-image: url('./hero-section.png'); /* Path to your image */
+  background-size: cover; /* Ensures the image covers the entire section */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents repeating the image */
+  height: 100vh; /* Full viewport height */
+  display: flex; /* For better layout control, optional */
+  align-items: center; /* Optional: Center the content vertically */
+  justify-content: center; /* Optional: Center the content horizontally */
+}
+
+
+.hero__content {
+  padding-bottom: 0px;
+  margin-top: -120px;
+}
+.search input {
+  border: none;
+  outline: none;
+  padding: 7px 10%;
+}
+
+.search {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0;
+  margin-top: 30px;
+
+}
+
+p.mt-4 {
+  line-height: 1.5; /* Adjust this value as needed */
+  color: rgb(239, 239, 243);
+  font-size: 14px;
+}
+.search .btn {
+  border-radius: 0;
+  background-color: rgb(55, 189, 144);
+}
+
+.hero__title {
+  margin-bottom: 50px; 
+}

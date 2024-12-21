@@ -1,0 +1,29 @@
+.breadcrumb-container {
+    background-color: #fff;
+    padding: 15px 20px;
+    margin: 20px 60px; /* Removes horizontal centering */
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
+    text-align: left; /* Ensures content is left-aligned */
+  }
+  .breadcrumb-text {
+    color: #333;
+    font-size: 14px;
+    margin: 0;
+    text-align: left;
+    word-wrap: break-word;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+  }
+  
+  .breadcrumb-text span {
+    color: #149975;
+    
+  }
+  
+  .breadcrumb-text span:not(:last-child) {
+    color: #555; /* Non-final parts in breadcrumb get a dimmer color */
+  }
+  

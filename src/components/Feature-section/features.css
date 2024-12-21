@@ -1,0 +1,11 @@
+.single__feature h2 i {
+  font-size: 2.5rem;
+}
+
+.single__feature h6 {
+  font-weight: 600;
+}
+.item.desc{
+  line-height: 1.8;
+  margin-top: 20px;
+}

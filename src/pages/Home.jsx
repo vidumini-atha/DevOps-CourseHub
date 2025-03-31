@@ -9,6 +9,7 @@ import Features from "../components/Feature-section/Features";
 import Testimonials from "../components/Testimonial/Testimonials";
 import Newsletter from "../components/Newsletter/Newsletter";
 import Footer from "../components/Footer/Footer";
+//import UserMenu from "../components/UserMenu/UserMenu";
 
 const Home = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,6 +33,7 @@ const Home = () => {
     <Fragment>
       <Header isScrolled={isScrolled} />
       <HeroSection />
+      {/* <UserMenu /> */}
       <CompanySection />
       <AboutUs />
       <Courses />

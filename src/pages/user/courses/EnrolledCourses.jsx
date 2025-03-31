@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Spinner } from "reactstrap";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../../components/firebase";
-import './EnrolledCourses.css'
+import "./EnrolledCourses.css";
 
 const EnrolledCourses = () => {
   const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchEnrolledCourses = async () => {
+    const fetchEnrolledCourses = async (user) => {
       try {
-        const user = auth.currentUser;
-
-        /* if (!user) {
-          alert("You must be logged in to view enrolled courses.");
-          return;
-        } */
-
+        setLoading(true); // Start loading when fetching data
         const userDocRef = doc(getFirestore(), "users", user.uid);
         const userDoc = await getDoc(userDocRef);
 
@@ -30,21 +25,31 @@ const EnrolledCourses = () => {
       } catch (error) {
         console.error("Error fetching enrolled courses:", error);
       } finally {
-        setLoading(false);
+        setLoading(false); // Stop loading after data is fetched
       }
     };
 
-    fetchEnrolledCourses();
-  }, []);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        fetchEnrolledCourses(user); // Fetch data only when the user is authenticated
+      } else {
+        setEnrolledCourses([]);
+        setLoading(false);
+      }
+    });
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+    return () => unsubscribe(); // Cleanup listener on unmount
+  }, []);
 
   return (
     <Container className="mt-5">
       <h3 className="mb-4">Your Enrolled Courses</h3>
-      {enrolledCourses.length === 0 ? (
+      {loading ? (
+        <div className="loading-spinner">
+          <Spinner color="primary" />
+          <p>Loading your enrolled courses...</p>
+        </div>
+      ) : enrolledCourses.length === 0 ? (
         <p>You haven't enrolled in any courses yet.</p>
       ) : (
         <Row>

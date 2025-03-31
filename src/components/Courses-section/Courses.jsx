@@ -43,6 +43,7 @@ const Courses = () => {
 
   const handleSeeall = () => {
     navigate("/courses");
+    window.scrollTo(0, 0);
   };
   return (
     <section id='courses'>

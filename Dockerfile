@@ -1,28 +1,19 @@
-# Use the latest LTS version of Node.js
-FROM node:18-alpine
- 
+# Build Stage
+FROM node:latest
+
 # Set the working directory inside the container
-WORKDIR /app
- 
-# Copy package.json and package-lock.json
+WORKDIR /usr/src/app
+
+# Copy the contents of the local 'CourseHub' directory to the root
+# COPY COURSEHUB/* /
 COPY package*.json ./
- 
+COPY . .
+
 # Install dependencies
 RUN npm install
- 
-# Copy the rest of your application files
-COPY . .
- 
-# Expose the port your app runs on
-EXPOSE 3000
- 
-# Define the command to run your app
-CMD ["npm", "start"]
 
-# Build Stage
-FROM node:18-alpine AS build
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
+# Expose port 80 for the Nginx server
+EXPOSE 3000
+
+# Start Nginx
+CMD ["npm", "start"]

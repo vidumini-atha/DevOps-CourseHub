@@ -55,7 +55,7 @@ const Header = () => {
         <div className="navigation d-flex align-items-center justify-content-between">
           <div className="logo">
             <h2 className="d-flex align-items-center gap-1">
-              <i className="custom-icon"></i> Coursehub
+              <i className="custom-icon"></i> CourseHub
             </h2>
           </div>
 

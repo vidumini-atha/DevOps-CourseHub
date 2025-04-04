@@ -1,0 +1,17 @@
+version: '3'
+services:
+  react-app:
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - firebase
+
+  firebase:
+    image: firebase/firebase-tools:latest
+    command: tail -f /dev/null
+    volumes:
+      - ./firebase.json:/firebase.json
+      - ./functions:/functions

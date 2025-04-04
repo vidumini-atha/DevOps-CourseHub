@@ -10,7 +10,7 @@ services:
       - firebase
 
   firebase:
-    image: firebase/firebase-tools:latest
+    image: ghcr.io/firebase/firebase-tools:latest
     command: tail -f /dev/null
     volumes:
       - ./firebase.json:/firebase.json

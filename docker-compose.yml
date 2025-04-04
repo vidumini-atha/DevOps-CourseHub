@@ -6,12 +6,3 @@ services:
       - "80:80"
     environment:
       - NODE_ENV=production
-    depends_on:
-      - firebase
-
-  firebase:
-    image: ghcr.io/firebase/firebase-tools:latest
-    command: tail -f /dev/null
-    volumes:
-      - ./firebase.json:/firebase.json
-      - ./functions:/functions
